@@ -40,4 +40,3 @@ console.log('after splice: ', month);
 month.splice(2, 1, 'MaretAja'); //output: ['January', Februari, 'MaretAja', 'April', 'May']
 console.log('after splice and add: ', month);
 
-
