@@ -18,7 +18,7 @@ Saya berasal dari Tattooine
 console.log("====================");
 //============================================================
 
-//assignment operator
+//assignment operator (=) untuk mengubah nilai property
 const spaceship = {
     name: "Millenium Falcon",
     manufacturer: "Corellian Engineering Corporation",
