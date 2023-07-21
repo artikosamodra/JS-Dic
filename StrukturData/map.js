@@ -11,7 +11,7 @@ console.log("=====================");
 //================================================
 
 //map elemen pertama adalah key, elemen kedua adalah value
-
+//set() dan get()
 const capital = new Map([
     ["Jakarta", "Indonesia"],
     ["Londo", "England"],
