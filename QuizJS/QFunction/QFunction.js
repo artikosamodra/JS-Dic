@@ -23,17 +23,21 @@
 // Tulis kode di bawah ini
 function minimal(a, b)
 {
-    if (a < b) {
+    if (a <= b) {
         return a;
     } else {
         return b;
     }
 }
 
-let result = minimal(7, 6)
-console.log(result)
-
+let result1 = minimal(7, 6)
+console.log(result1)
+let result2 = minimal(2, 6)
+console.log(result2)
+let result3 = minimal(6, 6)
+console.log(result3)
 //==============================================================
+
 function findIndex(array, number) {
     for (let i = 0; i < array.length; i++) {
         if(array[i] === number){
