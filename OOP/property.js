@@ -73,8 +73,6 @@ console.log(user.fullName); //output: Fulan Fulanah
  catatan:
  'get fullName' dan 'set fullnname' merupakan accessor property.
  accessor property merupakan method yang mengatur cara akses dari properti 'fullName'
-
-
  */
 
 console.log("========================");
