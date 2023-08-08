@@ -48,7 +48,7 @@ console.log("=================");
 //===========================================
 
 
-//CASE 2 - Inheritance/Pewarisan dengan superclass
+//CASE 2 - Inheritance/Pewarisan dengan superclass dengan ES6
 
 //SuperClass - Mail (Inheritance)
 class MailService { //class MailService akan diwariskan
@@ -91,3 +91,59 @@ whatsapp1.sendBroadcastMessage('Ini Isi Broadcast', ['+111111', '+222222', '+333
 
 email1.sendMessage('Ini Isi Email', 'artiko.game@gmail.com'); //output: pengirim@gmail.com sent Ini Isi Email to artiko.game@gmail.com
 email1.sendDelayedMessage('Ini Isi Email', ['artiko@gmail.com', 'fajar@gmail.com', 'samodra@gmail.com'], 1000); //output: pengirim@gmail.com sent Ini Isi Email to artiko@gmail.com,fajar@gmail.com,samodra@gmail.com
+
+console.log("=================");
+//===========================================
+
+//Pewarisan tanpa ES6
+
+//menggunakan function >> prototype inheritance
+function MailService1(sender) {
+    this.sender = sender;
+}
+
+MailService1.prototype.sendMessage = function (message, receiver) {
+    console.log(`${this.sender} sent ${message} to ${receiver}`);
+}
+
+function WhatsAppService2(sender) {
+    MailService1.call(this, sender); //(this, sender) bukan (this.sender) karena hasilnya sender akan undefined
+}
+
+//prototype inheritance
+WhatsAppService2.prototype = Object.create(MailService1.prototype);
+WhatsAppService2.prototype.constructor = WhatsAppService2;
+
+WhatsAppService2.prototype.sendBroadcastMessage = function (message, receivers) {
+    for (const receiver of receivers) {
+        this.sendMessage(message, receiver);
+    }
+}
+
+function EmailService2(sender) {
+    MailService1.call(this, sender); //artinya memanggil properti this.x dengan argumen sender
+}
+
+//prototype inheritance
+EmailService2.prototype = Object.create(MailService1.prototype);
+EmailService2.prototype.constructor = EmailService2;
+
+EmailService2.prototype.sendDelayedMessage = function (message, receiver, delay) {
+    setTimeout(() => {
+        this.sendMessage(message, receiver);
+    }, delay);
+}
+
+const whatsapp2 = new WhatsAppService2('+000000');
+const email2 = new EmailService2('pengirim@gmail.com');
+
+whatsapp2.sendMessage('Halo', '+081222333444'); //output: +000000 sent Halo to +081222333444
+whatsapp2.sendBroadcastMessage('Ini Pesan Broadcast', ['+11111', '+22222', '+33333']); /*output:
++000000 sent Ini Pesan Broadcast to +11111
++000000 sent Ini Pesan Broadcast to +22222
++000000 sent Ini Pesan Broadcast to +33333
+*/
+
+email2.sendMessage('halo artiko', 'artiko.game@gmail.com'); //output: pengirim@gmail.com sent halo artiko to artiko.game@gmail.com
+email2.sendDelayedMessage('Ini email delay', ['artiko@gmail.com', 'fajar@gmail.com', 'samodra@gmail.com'], 1000); //output: pengirim@gmail.com sent Ini email delay to artiko@gmail.com,fajar@gmail.com,samodra@gmail.com
+
