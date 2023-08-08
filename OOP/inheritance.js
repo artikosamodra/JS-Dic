@@ -146,4 +146,27 @@ whatsapp2.sendBroadcastMessage('Ini Pesan Broadcast', ['+11111', '+22222', '+333
 
 email2.sendMessage('halo artiko', 'artiko.game@gmail.com'); //output: pengirim@gmail.com sent halo artiko to artiko.game@gmail.com
 email2.sendDelayedMessage('Ini email delay', ['artiko@gmail.com', 'fajar@gmail.com', 'samodra@gmail.com'], 1000); //output: pengirim@gmail.com sent Ini email delay to artiko@gmail.com,fajar@gmail.com,samodra@gmail.com
+console.log("===============");
+//=============================
 
+//Operator instanceof
+/*
+>> || operand1 instance of operand2
+penjelasan
+operand 1 : objek yang ingin di test prototypenya
+operand 2 : merupakan constructor function atau class
+*/
+
+//example kita pakai test code dari "Pewarisan tanpa ES6"
+console.log(whatsapp2 instanceof WhatsAppService2); //output: true
+console.log(whatsapp2 instanceof EmailService2); //output: false
+console.log(whatsapp2 instanceof MailService1); //output: true
+
+console.log(email2 instanceof WhatsAppService2); //output: false
+console.log(email2 instanceof EmailService2); //output: true
+console.log(email2 instanceof MailService1); //output: true
+
+/*
+jika 'true' artinya prototype objek (operand1) memiliki hubungan dengan constructor/class (operand2) tersebut
+jika 'false' artinya prototype objek (operand1) tidak memiliki hubungan dengan constructor/class (operand2) tersebut
+*/
