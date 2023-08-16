@@ -35,14 +35,16 @@ class Animal {
         this.age = age;
         this.isMammal = isMammal;
     }
+
+    info() {
+        console.log(`name: ${this.name}, age: ${this.age}, isMammal: ${this.isMammal}`);
+    }
 }
 
 class Rabbit extends Animal {
     constructor(name, age, isMammal) {
         super(name, age, isMammal = true);
     }
-
-
 
     eat() {
         return (`${this.name} sedang makan!`);
@@ -64,13 +66,25 @@ class Eagle extends Animal {
 const myRabbit = new Rabbit('Labi', 2);
 const myEagle = new Eagle('Elo', 4);
 
-//call output
-console.log(myRabbit);
-console.log(myRabbit.eat());
-console.log(myEagle);
-console.log(myEagle.fly());
+//call output 1
+console.log(myRabbit); //output: Rabbit { name: 'Labi', age: 2, isMammal: true }
+console.log(myRabbit.eat()); //output: Labi sedang makan!
 
+console.log(myEagle); //output: Eagle { name: 'Elo', age: 4, isMammal: false }
+console.log(myEagle.fly()) //output: Elo sedang terbang!
 console.log("==============================");
-//===========================================
 
+//call output 1
+myRabbit.info(); //output: name: Labi, age: 2, isMammal: true
+myEagle.info(); //output: name: Elo, age: 4, isMammal: false
 
+myRabbit.eat();
+myEagle.fly();
+
+/*
+catatan:
+alasan kenapa myRabbit.eat() dan myEagle.fly() tidak menampilkan output.
+= sebenarnya fungsi tetap dijalankan namun tidak ditampilkan karena tidak memanggil console.log
+jika ingin memanggil langsung, maka pada bagian fungsi 'return' bisa diubah menjadi console.log("*****").
+namun tentunya akan menghilangkan perintah return.
+*/
