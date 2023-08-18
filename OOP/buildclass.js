@@ -24,7 +24,6 @@ console.log(timeInMakassar);
 class UniqueArray extends Array { //UniqueArray class buatan kita extends untuk memanggil superclass 'Array' bawaan JS
     constructor(...args) {
         const uniqueValue = args.filter((item, index) => args.indexOf(item) === index); //filter array agar unik atau tidak duplikat.
-
         super(...uniqueValue); //super dipanggil untuk menhindari "error Reference....."
     }
 
