@@ -46,7 +46,4 @@ const person2 = {
     name: 'Bobo'
 };
 const newPerson2 = createPersonAge2(18, person2);
-console.log({ person2, newPerson2 });
-
-//output :
-//output :
+console.log({ person2, newPerson2 }); //output : { person2: { name: 'Bobo' }, newPerson2: { name: 'Bobo', age: 18 } }
