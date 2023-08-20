@@ -118,3 +118,55 @@ countDown1(5); /*output:
 2
 1
 */
+
+//Higher-Order Function : function yang dapat menerima function lain pada argumen dan mengembalikan sebuah function
+//dapat menyimpan function dalam variable, diperlakukan seperti data
+const hello = () => {
+    console.log('Hello')
+};
+
+const say = (someFunction) => {
+    someFunction();
+}
+
+const sayHello = () => {
+    return () => {
+        console.log('Hello');
+    }
+}
+
+hello(); //output : hello
+say(hello); //output : hello
+sayHello()(); //output : hello
+
+/*Catatan:
+Penggunaan High-Order Function untuk:
+1. Mengabstraksi atau mengisolasi sebuah aksi, event atau menangani alur async menggunakan callback, promise dsb.
+2. Membuat utilities yang dapat berbagi tipe data
+3. membuat teknik currying atau function composition.
+*/
+
+//Contonh Hight-Order Funtion >> Array map()
+const namesx = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+
+const arrayMap = (arr, action) => {
+    const loopTrough = (arr, action, newArray = [], index = 0) => {
+        const item = arr[index];
+        if (!item) return newArray;
+        return loopTrough(arr, action, [...newArray, action(arr[index])], index + 1);
+    }
+
+    return loopTrough(arr, action);
+}
+
+const newNamesx = arrayMap(namesx, (name) => `${name}!`);
+
+console.log({
+    namesx,
+    newNamesx,
+}); /*output: 
+{
+  namesx: [ 'Harry', 'Ron', 'Jeff', 'Thomas' ],
+  newNamesx: [ 'Harry!', 'Ron!', 'Jeff!', 'Thomas!' ]
+}
+*/
