@@ -88,33 +88,3 @@ console.log(newUser);
 console.log("================");
 //=============================
 
-//Rekursif : fungsi yang memanggil dirinya sendiri.
-
-//bentuk sintaksis sebelum di rekursif
-const countDown = start => {
-    do {
-        console.log(start);
-        start -= 1;
-    }
-    while (start > 0);
-}
-countDown(5); /*output:
-5
-4
-3
-2
-1
-*/
-
-//setelah di rekursif
-const countDown1 = start => {
-    console.log(start);
-    if (start > 0) countDown(start - 1);
-};
-countDown1(5); /*output:
-5
-4
-3
-2
-1
-*/
