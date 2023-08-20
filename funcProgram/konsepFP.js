@@ -32,10 +32,10 @@ const createPersonAge1 = (age, person1) => {
 };
 
 const person1 = {
-    name: 'Bobo'
+    name: 'Bobi'
 };
-const newPerson1 = createPersonAge1(18, person1); //output :person: { name: 'Bobo', age: 18 },
-console.log({ person1, newPerson1 }); //output : newPerson: { name: 'Bobo', age: 18 },
+const newPerson1 = createPersonAge1(18, person1); //output :person: { name: 'Bobi', age: 18 },
+console.log({ person1, newPerson1 }); //output : newPerson: { name: 'Bobi', age: 18 },
 
 //Pure
 const createPersonAge2 = (age, person2) => {
@@ -47,3 +47,74 @@ const person2 = {
 };
 const newPerson2 = createPersonAge2(18, person2);
 console.log({ person2, newPerson2 }); //output : { person2: { name: 'Bobo' }, newPerson2: { name: 'Bobo', age: 18 } }
+console.log("========================");
+//======================================
+
+
+//Immutability
+//menghasilkan array baru daripada merubah array yang sudah ada
+const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+const newNamesMark = names.map((name) => `${name}!`);
+console.log({ names, newNamesMark, }); //output: { names: ['Harry', 'Ron', 'Jeff', 'Thomas'], newNamesMark: ['Harry!', 'Ron!', 'Jeff!', 'Thomas!'] }
+
+
+//jika ingin merubah nilaidai sebuah objek dengan immubility
+//Case 1: contoh ini tidak menggunakan konsep paradigmaFP, contoh dengan paradigmaFP ada di Case 2.
+const user = {
+    firstname: 'Harry',
+    lastname: 'Protter',
+}
+console.log(user); //output: { firstname: 'Harry', lastname: 'Protter' }
+
+//kita rename nama belakangnya.
+const renameLastNameUser = (newLastName, user) => {
+    user.lastname = newLastName;
+}
+renameLastNameUser('Potter', user);
+console.log(user); //output: { firstname: 'Harry', lastname: 'Potter' }
+
+
+//Case 2: ini menggunakan konsep paradigmaFP >> untuk perbandingan dengan code Case 1.
+const user1 = {
+    firstName: 'Heri',
+    lastName: 'Putter',
+}
+
+const createUserNewLastName = (newLastName, user1) => {
+    return { ...user1, lastName: newLastName }
+}
+const newUser = createUserNewLastName('Pitter', user1); //output: { firstName: 'Heri', lastName: 'Pitter' }
+console.log(newUser);
+console.log("================");
+//=============================
+
+//Rekursif : fungsi yang memanggil dirinya sendiri.
+
+//bentuk sintaksis sebelum di rekursif
+const countDown = start => {
+    do {
+        console.log(start);
+        start -= 1;
+    }
+    while (start > 0);
+}
+countDown(5); /*output:
+5
+4
+3
+2
+1
+*/
+
+//setelah di rekursif
+const countDown1 = start => {
+    console.log(start);
+    if (start > 0) countDown(start - 1);
+};
+countDown1(5); /*output:
+5
+4
+3
+2
+1
+*/
