@@ -1,0 +1,13 @@
+{
+    "name": "es6",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module", //penambahan type: module >> digunakan jika export-import menggunakan ES6
+    "main": "es6.mjs",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node es6.mjs"
+    },
+    "author": "artiko",
+    "license": "ISC"
+}

@@ -13,4 +13,4 @@ module.exports = coffeeStock;
 module.exports = isCoffeeMachineReady;
 */
 
-console.log(module); //>> untuk menampilkan isi module di state.js
+//console.log(module); //>> untuk menampilkan isi module di state.js

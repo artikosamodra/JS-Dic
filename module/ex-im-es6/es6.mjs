@@ -2,8 +2,10 @@
 //es6.js = metode import export dengan es6.js >> import {'nama_import'} from ' 'directory' ';
 //khusus es6, menggunakan ekstensi '.mjs' untuk pembeda serta menambahkan 'type: module' pada package.json
 
-// penulisan 'coffeeStock' menjadi '{ coffeeStock, isCoffeeMachineReady }' karena mengimport lebih dari 1 nilai/disesuaikan dengan module export pada file state.js
-const { coffeeStock, isCoffeeMachineReady } = require('./state');
+import { coffeeStock, isCoffeeMachineReady } from './exports.mjs';
+
+console.log(coffeeStock); //output: { arabica: 100, robusta: 150, liberica: 200 }
+console.log(isCoffeeMachineReady); //output: true
 
 const makeCoffee = (type, miligrams) => {
     if (coffeeStock[type] >= miligrams) {
@@ -31,6 +33,3 @@ makeCoffee("robusta", 80); //output: Kopi berhasil dibuat!
 //120 mili, artinya stock arabica (100) tidak cukup untuk dipesan.
 makeCoffee("arabica", 120);//output: Biji kopi habis!
 
-//menampilkan isi dari state.js yang di export dengan inisial coffeeStock.
-console.log(coffeeStock); //output: { arabica: 100, robusta: 150, liberica: 200 }
-console.log(isCoffeeMachineReady); //output: true
