@@ -1,0 +1,13 @@
+{
+  "name": "q-ie-es6",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "main.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.mjs"
+  },
+  "author": "artiko",
+  "license": "ISC"
+}
