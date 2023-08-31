@@ -43,11 +43,34 @@
  */
 
 // TODO 1
+class validatorError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "validatorError";
+    }
+}
 
 // TODO 2
+const validateNumberInput = (a, b, c) => {
+    if (typeof a != "number") {
+        console.log('Argumen pertama harus number');
+    } else if (typeof b != "number") {
+        console.log('Argumen kedua harus number');
+    } else if (typeof c != "number") {
+        console.log('Argumen ketiga harus number');
+    } else {
+        console.log('Argumen sesuai');
+    }
+}
 
 const detectTriangle = (a, b, c) => {
     // TODO 3
+
+    try {
+        validateNumberInput(a, b, c)
+    } catch {
+        return `${error.message}`;
+    }
 
     if (a === b && b === c) {
         return 'Segitiga sama sisi';
@@ -59,3 +82,13 @@ const detectTriangle = (a, b, c) => {
 
     return 'Segitiga sembarang';
 };
+
+console.log(detectTriangle(1, false, 1)); //output: Argumen kedua harus number || Segitiga sama kaki
+console.log(detectTriangle('a', 3, 5)); //output: Argumen pertama harus number || Segitiga sembarang
+console.log(detectTriangle(12, 2, null)); //output: Argumen ketiga harus number || Segitiga sembarang
+
+console.log("=========================");
+
+console.log(detectTriangle(12, 2, 4)); //output: Argumen sesuai: Segitiga sembarang
+console.log(detectTriangle(12, 12, 12)); //output: Argumen sesuai: Segitiga sama sisi
+console.log(detectTriangle(12, 12, 4)); //output: Argumen sesuai: Segitiga sama kaki
