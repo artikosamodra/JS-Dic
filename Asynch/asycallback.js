@@ -42,4 +42,3 @@ Penjelasan case 1.
     - jika isOffline = true >> error : proses dihentikan dan output memanggil argumen pada 'userCallback'+'error,.message' pada isOffline.
     - jika isOffline = false >> proses berlanjut, argumen if error pada callback diabaikan dan lanjur ke argumen selanjutnya + 'users' yang berisi array.
 */
-
