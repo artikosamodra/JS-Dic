@@ -18,4 +18,4 @@ function getWeather(location, callback) {
     }, 1000);
 }
 
-module.exports = { getUser, getWeather };
+module.exports = { getUser, getWeather }; // inisial exports
