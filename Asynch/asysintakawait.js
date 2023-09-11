@@ -19,3 +19,10 @@ watchMovie(10)
 watchMovie(5)
     .then((result) => console.log(result))
     .catch((error) => console.error(error.message));
+
+/*
+Keuntungan Async Await
+1. Lebih mudah dipahami dan ditulis
+2. Terhindar dari callback
+3. Lebih Mudah dalam mengelola error
+*/
