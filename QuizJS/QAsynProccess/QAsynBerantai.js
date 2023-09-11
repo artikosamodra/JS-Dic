@@ -15,9 +15,39 @@
 
 const { buyTollRoadCard, topUpBalance, useTollRoad } = require('./utils');
 
-function getTollAccess() {
+//menggunakan async await
+async function getTollAccess() {
+    try {
+        const card = await buyTollRoadCard(25); //membeli card >> fungsi dengan saldo 25 (aturan jika saldo <= 25, harus top up)
+        const balance = await topUpBalance(true, 10); //top up saldo >> saldo 25, melakukan top-up true, saldo sebesar 10.
+        const result = await useTollRoad(balance); //useTollRoad >> menggunakan saldo untuk jalan tol (dalam utils, biaya tolll 10 saldo)
+        console.log(result);
+    } catch (error) {
+        console.error(error.message);
+    }
     return;
 }
 
+//Menggunakan Promise berantai-based (then-catch)
+function getTollAccess2() {
+    buyTollRoadCard(25)
+        .then((money) => {
+            return topUpBalance(true, 10)
+        })
+        .then((card) => {
+            return useTollRoad(card)
+        })
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((error) => {
+            console.error(error.message);
+        });
+}
+
+
 // Jangan hapus kode di bawah ini
 getTollAccess();
+getTollAccess2()
+
+

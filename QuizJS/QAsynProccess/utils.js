@@ -40,7 +40,7 @@ function useTollRoad(card) {
             card.balance -= TOLL_PRICE;
 
             console.log('using toll road');
-            resolve();
+            resolve('Selamat menikmati perjalanan');
         }, 1000);
     });
 }
